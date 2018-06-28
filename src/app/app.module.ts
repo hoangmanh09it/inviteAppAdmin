@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { ProtectedDirective } from './directives/protected.directive';
@@ -19,13 +19,14 @@ import { CreateInviteTokenComponent } from './components/create-invite-token/cre
 		ProtectedDirective,
 		TourListComponent,
 		InviteTokenComponent,
-		CreateInviteTokenComponent,
+		CreateInviteTokenComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
 		HttpModule,
-		ReactiveFormsModule,
+    ReactiveFormsModule,
+    ClipboardModule,
 		RouterModule.forRoot(routes)
   ],
   providers: [],

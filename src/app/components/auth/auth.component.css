@@ -6,6 +6,12 @@
   background-size: cover;
   min-height: 500px;
 }
+
 .login-form {
   margin-top: 15px;
+}
+
+.login-faill {
+  text-align: center;
+  margin-bottom: 20px;
 }

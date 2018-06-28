@@ -1,0 +1,17 @@
+.dialog-header {
+  text-align: center;
+  background: #b5b5b5;
+  font-weight: bold;
+}
+
+.token-generate-output {
+  width: 70%;
+  float: left;
+  height: 34px;
+}
+.copy-button{
+  background: yellow;
+  height: 34px;
+  border-radius: 3px;
+  margin-left: 2px;
+}

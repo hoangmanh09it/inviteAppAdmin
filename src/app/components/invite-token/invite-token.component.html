@@ -35,7 +35,7 @@
       </table>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <button style="margin-top: 50px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      <button style="margin-top: 50px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="generateInviteToken()">
         CREATE INVITE TOKEN
       </button>
       <!-- <a type="button" class="btn btn btn-danger" style="margin-top: 12px;" href="create-invite-token"></a> -->
@@ -50,19 +50,30 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-header dialog-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <strong>SHARE APP</strong>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </h5>
       </div>
       <div class="modal-body">
-        ...
+        <div>
+          <h6>YOUR APP SHARING TOKEN</h6>
+        </div>
+        <div>
+          <h6>Copy and paste bellow token into email and app</h6>
+        </div>
+        <div>
+          <input type="text" class="form-control" disabled value="{{newIviteToken.code}}" class="token-generate-output">
+          <button class="btn btn-outline-secondary" type="button" (click)="copyToClipboard()" class="copy-button">Copy</button>
+        </div>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

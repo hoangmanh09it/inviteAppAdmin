@@ -11,16 +11,28 @@ import {
   Body
 } from '@angular/http/src/body';
 
+import {
+  InviteToken
+} from '../../interfaces/invite-token'
+
 @Component({
   selector: 'app-invite-token',
   templateUrl: './invite-token.component.html',
   styleUrls: ['./invite-token.component.css']
 })
 export class InviteTokenComponent implements OnInit {
-
   inviteTokens: [Object];
+  newIviteToken: InviteToken;
   private ApiUrl = 'http://localhost:3000';
   constructor(private http: Http) {
+    this.newIviteToken = {
+      id: 0,
+      code: "",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      active: false
+    }
+    // this.inviteTokens = [this.newIviteToken]
     let access_token = localStorage.getItem('access_token');
     let headers = new Headers({
       'Authorization': access_token
@@ -60,6 +72,27 @@ export class InviteTokenComponent implements OnInit {
     });
   }
 
+  public generateInviteToken() {
+    let access_token = localStorage.getItem('access_token');
+    let headers = new Headers({
+      'Authorization': access_token
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let url = this.ApiUrl + '/api/invite-token';
+    this.http.post(url, {}, options).subscribe(respponse => {
+      this.generateTokenHandle(respponse)
+    }, error => {
+      console.log(error)
+    });
+  }
+
+
+  public copyToClipboard() {
+
+  }
+
   private handleListInviteToken(respponse) {
     let body = JSON.parse(respponse._body)
     this.inviteTokens = body.data;
@@ -79,5 +112,12 @@ export class InviteTokenComponent implements OnInit {
       }
     }
   }
+
+
+  private generateTokenHandle(respponse) {
+    let body = JSON.parse(respponse._body)
+    this.newIviteToken = body.data;
+  }
+
 
 }

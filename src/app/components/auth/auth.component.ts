@@ -23,6 +23,8 @@ import 'rxjs'
 export class AuthComponent implements OnInit {
   username: string;
   password: string;
+  isLoginFaild = false;
+  errorMessage : string
   constructor(private http: Http, private userLogin: LoginService, private route: Router) {
     if (this.userLogin.username && this.userLogin.access_token) {
       route.navigate(['']);
@@ -49,10 +51,17 @@ export class AuthComponent implements OnInit {
     }
   }
   ngOnInit() {}
-  private handleErr(err) {
-    //this.userLogin.remove();
+  private handleErr(error) {
+    this.isLoginFaild = true;
+    if (error.status === 0) {
+      this.errorMessage = "Netword error"
+    }else {
+      let body = JSON.parse(error._body)
+      this.errorMessage = body.statusText
+    }
   }
   private handleSuccess(data) {
+    this.isLoginFaild = false;
     this.userLogin.login(data);
     this.route.navigate(['/']);
   }

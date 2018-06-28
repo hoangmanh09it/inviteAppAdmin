@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 auth-component">
+    <div class="row login-form">
+      <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3">
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <form>
+          <input [(ngModel)]="username" type="text" name="username" placeholder="username" required class="form-control input-lg" value="admin"/>
+          <input [(ngModel)]="password" type="password" class="form-control input-lg" name="password" placeholder="password" required=""  value="password"/>
+          <div class="pwstrength_viewport_progress"></div>
+          <button (click)="login()" type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+        </form>
+      </div>
+      <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3">
+      </div>
+    </div>
+  </div>
+</div>

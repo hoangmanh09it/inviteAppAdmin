@@ -1,0 +1,29 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tour guid applied</th>
+            <th>Title</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>Start day</th>
+            <th>End day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tour of tourLists">
+            <td><a href="tour-details/{{tour._id}}">View</a></td>
+            <td>{{tour.title}}</td>
+            <td>{{tour.departure}}</td>
+            <td>{{tour.destination}}</td>
+            <td>{{tour.start_date | date:'medium'}}</td>
+            <td>{{tour.end_date | date:'medium'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> </div>
+  </div>
+</div>

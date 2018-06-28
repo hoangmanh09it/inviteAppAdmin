@@ -1,0 +1,68 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Invite token</th>
+            <th>Start</th>
+            <th>Created at</th>
+            <th>Update status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let token of inviteTokens">
+            <td>{{token.code}}</td>
+            <td>
+              <div *ngIf="token.active">
+                Active
+              </div>
+              <div *ngIf="!token.active">
+                Disable
+              </div>
+            </td>
+            <td>{{token.createdAt}}</td>
+            <td>
+              <div *ngIf="token.active">
+                <button type="button" class="btn btn-primary" (click)="updateInviteTokenStatus(token.id, false)">Disable</button>
+              </div>
+              <div *ngIf="!token.active">
+                <button type="button" class="btn btn-success" (click)="updateInviteTokenStatus(token.id, true)">Active</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <button style="margin-top: 50px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        CREATE INVITE TOKEN
+      </button>
+      <!-- <a type="button" class="btn btn btn-danger" style="margin-top: 12px;" href="create-invite-token"></a> -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

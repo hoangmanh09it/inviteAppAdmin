@@ -15,6 +15,7 @@ import {
   LoginService
 } from '../../services/login.service'
 import 'rxjs'
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -23,11 +24,13 @@ import 'rxjs'
 export class AuthComponent implements OnInit {
   username: string;
   password: string;
+  API_URL = environment.API_URL;
   isLoginFaild = false;
   errorMessage : string
   constructor(private http: Http, private userLogin: LoginService, private route: Router) {
     if (this.userLogin.username && this.userLogin.access_token) {
       route.navigate(['']);
+      console.log(this.API_URL)
     }
 
   }
@@ -43,7 +46,7 @@ export class AuthComponent implements OnInit {
       let options = new RequestOptions({
         headers: headers
       });
-      this.http.post('http://localhost:3000/api/auth/login', body, options).subscribe(response => {
+      this.http.post(this.API_URL+ '/api/auth/login', body, options).subscribe(response => {
       this.handleSuccess(response)
       }, error => {
         this.handleErr(error)

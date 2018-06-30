@@ -14,7 +14,7 @@ import {
 import {
   InviteToken
 } from '../../interfaces/invite-token'
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-invite-token',
   templateUrl: './invite-token.component.html',
@@ -23,7 +23,7 @@ import {
 export class InviteTokenComponent implements OnInit {
   inviteTokens: [Object];
   newIviteToken: InviteToken;
-  private ApiUrl = 'http://localhost:3000';
+  private ApiUrl = environment.API_URL;
   constructor(private http: Http) {
     this.newIviteToken = {
       id: 0,

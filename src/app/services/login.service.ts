@@ -12,9 +12,9 @@ export class LoginService {
 		let body = JSON.parse(userInfo._body)
 		let user = body.data
 		this.username = user.username;
-		this.access_token = 'Bearer ' + user.token;
+		this.access_token = user.token;
 		localStorage.setItem("username", user.username);
-		localStorage.setItem("access_token", 'Bearer ' + user.token);
+		localStorage.setItem("access_token", user.token);
 		localStorage.setItem("userId", user.id);
 	}
 	public logoutService() {
